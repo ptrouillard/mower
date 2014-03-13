@@ -12,10 +12,18 @@ sample api usage:
         new MowerMove(mower2, "AADAADADDA"));
     shearing.runShearing();
 
-sample provided as test units (
+sample provided as test units.
 
-mvn clean test : launch all tests.
+How to launch:
+
+> mvn clean test -Dtest=ShearingSequenceTest
 
 ShearingSequenceTest : launch the shearing with two mowers (sample written below).
+
+todo:
+
+1. logger
+2. comments
+
 
 
