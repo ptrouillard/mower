@@ -9,21 +9,21 @@ import static org.hamcrest.Matchers.equalTo;
  * User: ptrouillard@gmail.com
  * Date: 13/03/14 22:44
  */
-public class LineTest {
+public class MowerMoveTest {
 
     @Test(expectedExceptions = IllegalArgumentException.class)
     public void verify_mower_is_null() {
-        new Line(null, "GA");
+        new MowerMove(null, "GA");
     }
 
     @Test(expectedExceptions = IllegalArgumentException.class)
     public void verify_moves_are_null() {
-        new Line(new Mower(), null);
+        new MowerMove(new Mower(), null);
     }
 
     @Test
     public void verify_single_go_ahead_move_is_executed() {
-        Line line = new Line(new Mower().withDirection(Direction.NORTH).withPositionX(0).withPositionY(0), "A");
+        MowerMove line = new MowerMove(new Mower().withDirection(Direction.NORTH).withPositionX(0).withPositionY(0), "A");
         line.moveIt();
         assertThat(line.getMower().getPositionX(), equalTo(0));
         assertThat(line.getMower().getPositionY(), equalTo(1));
@@ -32,7 +32,7 @@ public class LineTest {
 
     @Test
     public void verify_two_go_ahead_moves_are_executed() {
-        Line line = new Line(new Mower().withDirection(Direction.NORTH).withPositionX(0).withPositionY(0), "AA");
+        MowerMove line = new MowerMove(new Mower().withDirection(Direction.NORTH).withPositionX(0).withPositionY(0), "AA");
         line.moveIt();
         assertThat(line.getMower().getPositionX(), equalTo(0));
         assertThat(line.getMower().getPositionY(), equalTo(2));
@@ -41,7 +41,7 @@ public class LineTest {
 
     @Test
     public void verify_three_go_left_moves_are_executed() {
-        Line line = new Line(new Mower().withDirection(Direction.NORTH).withPositionX(0).withPositionY(0), "GGG");
+        MowerMove line = new MowerMove(new Mower().withDirection(Direction.NORTH).withPositionX(0).withPositionY(0), "GGG");
         line.moveIt();
         assertThat(line.getMower().getPositionX(), equalTo(0));
         assertThat(line.getMower().getPositionY(), equalTo(0));
@@ -50,7 +50,7 @@ public class LineTest {
 
     @Test
     public void verify_three_go_right_moves_are_executed() {
-        Line line = new Line(new Mower().withDirection(Direction.NORTH).withPositionX(0).withPositionY(0), "DDD");
+        MowerMove line = new MowerMove(new Mower().withDirection(Direction.NORTH).withPositionX(0).withPositionY(0), "DDD");
         line.moveIt();
         assertThat(line.getMower().getPositionX(), equalTo(0));
         assertThat(line.getMower().getPositionY(), equalTo(0));
@@ -59,7 +59,7 @@ public class LineTest {
 
     @Test
     public void verify_basic_move_is_ok() {
-        Line line = new Line(new Mower().withDirection(Direction.NORTH).withPositionX(0).withPositionY(0), "AGDAGD");
+        MowerMove line = new MowerMove(new Mower().withDirection(Direction.NORTH).withPositionX(0).withPositionY(0), "AGDAGD");
         line.moveIt();
         assertThat(line.getMower().getPositionX(), equalTo(0));
         assertThat(line.getMower().getPositionY(), equalTo(2));
@@ -68,6 +68,6 @@ public class LineTest {
 
     @Test(expectedExceptions = IllegalArgumentException.class)
     public void verify_invalid_command_is_rejected() {
-        new Line(new Mower().withDirection(Direction.NORTH).withPositionX(0).withPositionY(0), "Z");
+        new MowerMove(new Mower().withDirection(Direction.NORTH).withPositionX(0).withPositionY(0), "Z");
     }
 }

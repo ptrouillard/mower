@@ -8,12 +8,12 @@ import java.util.regex.Pattern;
  * User: ptrouillard@gmail.com
  * Date: 13/03/14 22:43
  */
-public class Line {
+public class MowerMove {
 
     private final Mower mower;
     private final String moves;
 
-    public Line(Mower mower, String moves) {
+    public MowerMove(Mower mower, String moves) {
         this.mower = new MyAssert<Mower>().notNull(mower, "mower cannot be null");
         this.moves = new MyAssert<String>().notNull(moves, "moves cannot be null");
         checkMoves(this.moves);

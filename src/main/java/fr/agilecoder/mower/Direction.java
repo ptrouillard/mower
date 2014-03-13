@@ -5,13 +5,18 @@ package fr.agilecoder.mower;
  * Date: 13/03/14 21:42
  */
 public enum Direction {
-    EAST,
-    WEST,
-    NORTH,
-    SOUTH;
+    EAST('E'),
+    WEST('W'),
+    NORTH('N'),
+    SOUTH('S');
 
     private Direction toLeft;
     private Direction toRight;
+    private char singleLetterCode;
+
+    private Direction(char singleLetterCode) {
+        this.singleLetterCode = singleLetterCode;
+    }
 
     public void setToLeft(Direction toLeft) {
         this.toLeft = toLeft;
@@ -39,5 +44,17 @@ public enum Direction {
         Direction.WEST.setToRight(Direction.NORTH);
         Direction.EAST.setToLeft(Direction.NORTH);
         Direction.EAST.setToRight(Direction.SOUTH);
+    }
+
+    public char getSingleLetterCode() {
+        return this.singleLetterCode;
+    }
+
+    public static Direction fromSingleLetterCode(char code) {
+        for (Direction direction : values()) {
+            if (direction.getSingleLetterCode() == code)
+                return direction;
+        }
+        return null;
     }
 }

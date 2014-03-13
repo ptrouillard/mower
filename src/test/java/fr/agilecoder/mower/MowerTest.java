@@ -84,6 +84,27 @@ public class MowerTest {
     @Test
     public void verify_that_mower_stays_inside_borders() {
         Border border = new Border(2,2);
-        Mower mower = new Mower().withDirection(Direction.NORTH);
+        Mower mower = new Mower(border).withDirection(Direction.NORTH).withPositionX(1).withPositionY(1);
+        mower.goAhead();
+        mower.goAhead();
+        mower.goAhead();
+        assertThat(mower.getPositionY(), equalTo(2));
+        assertThat(mower.getPositionX(), equalTo(1));
+        mower.withDirection(Direction.EAST);
+        mower.goAhead();
+        mower.goAhead();
+        assertThat(mower.getPositionX(), equalTo(2));
+        mower.withDirection(Direction.WEST);
+        mower.goAhead();
+        mower.goAhead();
+        mower.goAhead();
+        assertThat(mower.getPositionX(), equalTo(0));
+        mower.withDirection(Direction.SOUTH);
+        mower.goAhead();
+        mower.goAhead();
+        mower.goAhead();
+        assertThat(mower.getPositionY(), equalTo(0));
+
+
     }
 }

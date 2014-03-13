@@ -9,10 +9,17 @@ public class Mower {
     private Direction direction;
     private int x;
     private int y;
+    private Border border;
 
     public Mower() {
         this.x=0;
         this.y=0;
+    }
+
+    public Mower(Border border) {
+        this.x=0;
+        this.y=0;
+        this.border = border;
     }
 
     public Mower withDirection(Direction direction) {
@@ -34,6 +41,22 @@ public class Mower {
             case WEST:
                 this.x-=1;
                 break;
+        }
+        checkBounds();
+    }
+
+    private void checkBounds() {
+        if (this.x < 0)
+            this.x = 0;
+        if (this.y < 0)
+            this.y = 0;
+        if (border != null) {
+            if (this.x > border.getX()) {
+                this.x = border.getX();
+            }
+            if (this.y > border.getY()) {
+                this.y = border.getY();
+            }
         }
     }
 
@@ -65,5 +88,10 @@ public class Mower {
 
     public void turnLeft() {
         this.direction = this.direction.getToLeft();
+    }
+
+    @Override
+    public String toString() {
+        return String.valueOf(x) + " " + String.valueOf(y) + " " + direction.getSingleLetterCode();
     }
 }

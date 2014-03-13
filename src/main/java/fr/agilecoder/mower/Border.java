@@ -1,7 +1,5 @@
 package fr.agilecoder.mower;
 
-import javax.validation.constraints.Min;
-
 /**
  * Border of the lawn
  * User: ptrouillard@gmail.com
@@ -9,9 +7,7 @@ import javax.validation.constraints.Min;
  */
 public class Border {
 
-    @Min(1)
     private int x;
-    @Min(1)
     private int y;
 
     public Border(int x, int y) {
@@ -25,5 +21,10 @@ public class Border {
 
     public int getY() {
         return y;
+    }
+
+    @Override
+    public String toString() {
+        return String.valueOf(x) + " " + String.valueOf(y);
     }
 }
