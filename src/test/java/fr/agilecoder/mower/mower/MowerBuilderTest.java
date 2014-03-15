@@ -1,8 +1,9 @@
-package fr.agilecoder.mower;
+package fr.agilecoder.mower.mower;
 
+import fr.agilecoder.mower.mower.Mower;
 import org.testng.annotations.Test;
 
-import static fr.agilecoder.mower.BorderBuilder.build;
+import static fr.agilecoder.mower.mower.MowerBuilder.build;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 
@@ -10,27 +11,37 @@ import static org.hamcrest.Matchers.equalTo;
  * User: ptrouillard@gmail.com
  * Date: 14/03/14 00:05
  */
-public class BorderBuilderTest {
+public class MowerBuilderTest {
 
     @Test
     public void verify_basic_case_is_ok() {
-        Border border = build("1 2");
-        assertThat(border.toString(), equalTo("1 2"));
+        Mower mower = build("1 2 N");
+        assertThat(mower.toString(), equalTo("1 2 N"));
+    }
+
+    @Test(expectedExceptions = IllegalArgumentException.class)
+    public void verify_missing_direction() {
+        build("1 2");
     }
 
     @Test(expectedExceptions = IllegalArgumentException.class)
     public void verify_missing_y() {
-        build("1");
+        build("1 N");
+    }
+
+    @Test(expectedExceptions = IllegalArgumentException.class)
+    public void verify_missing_position() {
+        build("N");
     }
 
     @Test(expectedExceptions = IllegalArgumentException.class)
     public void verify_invalid_x_position() {
-        build("A 2");
+        build("A 2 N");
     }
 
     @Test(expectedExceptions = IllegalArgumentException.class)
     public void verify_invalid_y_position() {
-        build("1 A");
+        build("1 A N");
     }
 
     @Test(expectedExceptions = IllegalArgumentException.class)

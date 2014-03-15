@@ -1,6 +1,7 @@
 package fr.agilecoder.mower;
 
 /**
+ * List of available directions.
  * User: ptrouillard@gmail.com
  * Date: 13/03/14 21:42
  */

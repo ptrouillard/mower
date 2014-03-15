@@ -1,4 +1,4 @@
-package fr.agilecoder.mower;
+package fr.agilecoder.mower.border;
 
 /**
  * Border of the lawn

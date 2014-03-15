@@ -1,5 +1,6 @@
-package fr.agilecoder.mower;
+package fr.agilecoder.mower.border;
 
+import fr.agilecoder.mower.border.Border;
 import org.testng.annotations.Test;
 
 /**
