@@ -5,6 +5,8 @@ import fr.agilecoder.mower.border.BorderBuilder;
 import fr.agilecoder.mower.mower.Mower;
 import fr.agilecoder.mower.mower.MowerBuilder;
 import fr.agilecoder.mower.mower.MowerDriverImpl;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.testng.annotations.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;

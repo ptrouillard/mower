@@ -30,12 +30,11 @@ public class ShearingSequence {
     public void run() {
         for (int index=0; index<moves.length();index++) {
             char move = moves.charAt(index);
-            if (move == 'A')
-                this.driver.goAhead();
-            if (move == 'D')
-                this.driver.turnRight();
-            if (move == 'G')
-                this.driver.turnLeft();
+            switch( move) {
+                case 'A' : this.driver.goAhead(); break;
+                case 'D' : this.driver.turnRight(); break;
+                case 'G' : this.driver.turnLeft(); break;
+            }
         }
     }
 
